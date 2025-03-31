@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div id="dashboard" class="dashboard-container">
+        <div class="header">
+            <h1>Analytics Dashboard</h1>
+            <div class="controls">
+                <select id="chartTypeSelector">
+                    <option value="bar">Bar Chart</option>
+                    <option value="line">Line Chart</option>
+                    <option value="pie">Pie Chart</option>
+                </select>
+                <button id="exportCSV">Export CSV</button>
+                <button id="exportPDF">Export PDF</button>
+                <button id="refreshData">Refresh Data</button>
+            </div>
+        </div>
+        
+        <canvas id="myChart"></canvas>
+    </div>
+    <div class="widget">
+        <h3 id="widgetTitle">📊 External Data Widget</h3>
+    
+        <!-- Input field for API URL -->
+        <input type="text" id="apiUrl" placeholder="Enter API URL (REST API or Google Sheets)">
+        
+        <!-- Button to load data -->
+        <button onclick="fetchData()">🔄 Load Data</button>
+    
+        <!-- Settings Panel (Toggle Button) -->
+        <button onclick="toggleSettings()">⚙️ Settings</button>
+        
+        <!-- Settings Panel -->
+        <div id="settingsPanel" class="hidden">
+            <label>Chart Type:</label>
+            <select id="chartType">
+                <option value="table">Table</option>
+                <option value="bar">Bar Chart</option>
+                <option value="line">Line Chart</option>
+            </select>
+    
+            <label>Widget Title:</label>
+            <input type="text" id="widgetTitleInput" placeholder="Enter Widget Title">
+            
+            <label>Background Color:</label>
+            <input type="color" id="widgetColor">
+    
+            <button onclick="applySettings()">✅ Apply Settings</button>
+        </div>
+    
+        <!-- Area to display fetched data -->
+        <pre id="dataDisplay">No data loaded yet.</pre>
+    </div>
+    
+    <div class="widget resizable">
+        <h3 id="widgetTitle" contenteditable="true">📊 Click to Edit Title</h3>
+    
+        <!-- Input field for API URL -->
+        <input type="text" id="apiUrl" placeholder="Enter API URL (REST API or Google Sheets)">
+        
+        <!-- Button to load data -->
+        <button onclick="fetchData()">🔄 Load Data</button>
+        
+        <!-- Settings Panel Toggle -->
+        <button onclick="toggleSettings()">⚙️ Settings</button>
+        
+        <!-- Settings Panel -->
+        <div id="settingsPanel" class="hidden">
+            <label>Chart Type:</label>
+            <select id="chartType">
+                <option value="table">Table</option>
+                <option value="bar">Bar Chart</option>
+                <option value="line">Line Chart</option>
+            </select>
+    
+            <label>Background Color:</label>
+            <input type="color" id="widgetColor">
+    
+            <button onclick="applySettings()">✅ Apply Settings</button>
+        </div>
+    
+        <!-- Area to display fetched data -->
+        <pre id="dataDisplay" contenteditable="true">Click to edit data...</pre>
+    
+        <!-- Resize Handle -->
+        <div class="resize-handle"></div>
+    </div>
+    
+    <!-- Manual Refresh Button -->
+    <button onclick="fetchData()">🔄 Refresh Data</button>
+
+<!-- Auto-Refresh Toggle -->
+    <label>
+        <input type="checkbox" id="autoRefresh" onclick="toggleAutoRefresh()"> Auto-Refresh
+    </label>
+
+    <script src="script.js"></script>
+</body>
+</html>
