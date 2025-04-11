@@ -1,0 +1,51 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customizable Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <div class="header">
+      <h1>Dashboard</h1>
+      <div class="controls">
+        <button id="add-widget">Add Widget</button>
+        <button id="save-layout">Save Layout</button>
+        <button id="load-layout">Load Layout</button>
+        <button id="export">Export</button>
+        <button id="import">Import</button>        
+        <select onchange="changeTheme(this.value)">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+    </div>
+    <div id="dashboard" class="widget-container"></div>
+  </div>
+
+  <div class="widget" draggable="true">
+    <div class="widget-header">
+      <span>Widget Title</span>
+      <button class="remove-btn">X</button>
+    </div>
+    <div class="widget-body">Content...</div>
+  </div>
+  
+  
+  <div id="helpModal" class="modal">Dashboard Instructions...</div>
+
+  <button id="theme-toggle">🌓</button>
+
+  <script src="theme.js"></script>
+  <script src="chart.js"></script>
+  <script src="data.js"></script>
+  <script src="export.js"></script>
+  <script src="layout.js"></script>
+  <script src="main.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

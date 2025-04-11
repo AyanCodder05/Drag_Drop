@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #1e1e2f;
+    color: white;
+  }
+  
+  .dashboard {
+    padding: 20px;
+  }
+  
+  .widget {
+    background: #2a2a3d;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    width: 250px;
+    height: 200px;
+    position: relative;
+  }
+  
+  .widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    background: #4b4b72;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .widget-controls {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  
+  .widget-controls button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .widget {
+    margin: 10px;
+    cursor: grab;
+  }
+  
+  body.light {
+     background: #fff;
+      color: #000; 
+    }
+body.dark { background: #111; color: #fff; }
+body.blue { background: #001f3f; color: #fff; }
+
+@media (max-width: 768px) {
+  .widget {
+    width: 100% !important;
+  }
+}
